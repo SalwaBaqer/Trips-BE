@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db/database");
+const userRoutes = require("./api/user/user.routes");
 
 const app = express();
 
@@ -12,13 +13,13 @@ app.use(express.json());
 app.use(cors());
 
 //ROUTES
-app.use(cors());
+app.use(userRoutes);
 
 //ERROR-HANDLE
 app.use((err, req, res, next) => {
   res
     .status(err.status || 500)
-    .json({ message: "Internal Server Error" || err });
+    .json({ message: err.message || "Internal Server Error" });
 });
 
 //PATH-NOT-FOUND

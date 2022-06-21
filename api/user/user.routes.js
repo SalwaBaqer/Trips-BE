@@ -1,8 +1,10 @@
 const express = require("express");
+const { signup } = require("./user.controllers");
+
+//create a mini express app
 const router = express.Router();
 
-const { userCreate } = require("./user.controllers");
-
-router.post("/", userCreate);
+//routes
+router.post("/signup", signup);
 
 module.exports = router;
